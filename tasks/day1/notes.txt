@@ -1,0 +1,90 @@
+1. Difference between HTTP1.1 vs HTTP2
+
+    => HTTP1.1 works on textual format where else HTTP2 works on the binary protocol.
+
+    => There is head of line blocking that blocks all the requests behind it until it doesn't get its all resources in HTTP1.1 where else in HTTP2 it allows muliplexing so one TCP connection is required for multipled requests.
+
+    => HTTP1.1 uses requests resource lnlining for use getting multiple pages where else HTTP2 uses PUSH frame by server that collects all multiple pages.
+
+    => HTTP1.1 compresses data by itself where else HTTP2 uses HPACK for data compression.
+
+    => In HTTP1.1 all requests are treated equally where else in HTTP2 it allows the client to specify the priority of requests, which can improve the responsiveness of the protocol and reduce latency.
+
+    => The HTTPS is optional in HTTP1.1 where else the HTTPS is mandatory in HTTP2.
+
+    Conclusion :
+
+        Overall HTTP2 offers significant performance improvements over HTTP1.1, particularly for complex web applications that require multiple requests and responses. However, not all web servers and browsers support HTTP2 and some older applications may not be compatible with the new protocol. 
+
+
+
+2. Objects and its internal representation in Javascript
+
+    In JavaScript an object is a standalone entity, with properties and type. 
+
+    For Example :
+
+        Consider a cup is an object, with properties. A cup has a color, a design, weight, a material it is made of,etc. The same way, JavaScript objects can have properties, which define their characteristics.
+
+    Creating Objects in JavaScript :
+
+        There are two methods to create objects in JavaScript whichare as follows
+
+        1. By object literal.
+        2. By creating instance of object directly (using new keyword).
+
+        => By object literal
+
+            The syntax of creating object using object literal is given below :
+
+                object = {
+                    property1 : value1,
+                    property2 : value2,
+                    .
+                    .
+                    .
+                    propertyN : valueN
+                }
+
+            Property and value is seperated by colon (:).
+
+            Example : 
+
+                var person={
+                    id : 1,
+                    name : "Ashike",
+                    age : 25
+                };
+
+        => By creating instance of object directly (using new keyword)
+
+            The syntax of creating object directly is given below :
+
+                var objectName = new Object();
+
+            Here, new keyword is used to create object.
+
+            Example : 
+
+                var person = new Object();
+                person.id = 1;
+                person.name = "Ashike";
+                person.age = 25;
+
+    Accessing JavaScript objects :
+
+        The syntax for accessing the property of an object is :
+
+            objectName.property
+            
+            or
+
+            objectName["property"]
+
+        Accessing 'name' from example 1 using dot operator,
+
+            person.name
+
+        Accessing 'name' from example 2 using [],
+
+            person["name"]
