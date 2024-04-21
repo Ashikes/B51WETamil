@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+</head>
+<body>
+    <span id="resume"></span>
+    
+    <script>
+        const resumeData = [{
+    "Name": "Ashike.S",
+    "education": "Bachelor of Science in Computer Science, 2020",
+    "workExperience": "Software Engineer, Tech Solutions Inc. January 2021",
+    "skills": [
+      "JavaScript",
+      "React.js",
+      "Node.js",
+      "HTML/CSS",
+      "Java",
+      "Python",
+      "Problem Solving",
+      "Team Collaboration"
+    ],
+    "certifications": "Certified Web Developer 2021",
+    "languages": ["English", "Tamil", "Malayalam"],
+    "interests": ["Coding", "Reading", "Traveling"]
+  }];
+
+    const resumePre = document.getElementById("resume");
+
+    resumePre.textContent = JSON.stringify(resumeData); 
+
+// Using a regular for loop
+console.log("-----Using For Loop-----");
+for (let i = 0; i < resumeData.length; i++) {
+  const resume = resumeData[i];
+  for (const key in resume) {
+    if (resume.hasOwnProperty(key)) {
+      if (Array.isArray(resume[key])) {
+        console.log(`${key}:`);
+        for (let j = 0; j < resume[key].length; j++) {
+          console.log(`  ${resume[key][j]}`);
+        }
+      } else {
+        console.log(`${key}: ${resume[key]}`);
+      }
+    }
+  }
+}
+
+// Using for...in loop
+console.log("-----Using for in Loop-----");
+for (const resume of resumeData) {
+  for (const key in resume) {
+    if (resume.hasOwnProperty(key)) {
+      if (Array.isArray(resume[key])) {
+        console.log(`${key}:`);
+        for (const value of resume[key]) {
+          console.log(`  ${value}`);
+        }
+      } else {
+        console.log(`${key}: ${resume[key]}`);
+      }
+    }
+  }
+}
+
+// Using for...of loop
+console.log("-----Using for of Loop-----");
+for (const resume of resumeData) {
+  for (const [key, value] of Object.entries(resume)) {
+    if (Array.isArray(value)) {
+      console.log(`${key}:`);
+      for (const item of value) {
+        console.log(`  ${item}`);
+      }
+    } else {
+      console.log(`${key}: ${value}`);
+    }
+  }
+}
+
+// Using forEach method
+console.log("-----Using Foreach Loop-----");
+resumeData.forEach(resume => {
+  for (const [key, value] of Object.entries(resume)) {
+    if (Array.isArray(value)) {
+      console.log(`${key}:`);
+      value.forEach(item => console.log(`  ${item}`));
+    } else {
+      console.log(`${key}: ${value}`);
+    }
+  }
+});
+
+
+
+    </script>
+</body>
+</html>
