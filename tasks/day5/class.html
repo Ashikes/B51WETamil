@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOPS in JS - Day 5</title>
+</head>
+<body>
+    
+    <script>
+        class Movie{
+            constructor (title,studio,rating="PG"){
+                this.title = title;
+                this.studio = studio;
+                this.rating = rating;
+            }
+            getPG(){
+                return(`The rating for ${this.title} is ${this.rating}`);
+            }
+        }
+
+        const movie1 = new Movie("Casino Royale","Eon Productions","PG13");
+        console.log(movie1.getPG());
+
+
+        // Convert the UML diagram to Typescript class. - use number for double
+        class Circle{
+            constructor (radius,color){
+                this.radius = radius;
+                this.color = color;
+            }
+            getRadius(){
+                return(`The radius of the circle is ${this.radius}`);
+            }
+            setRadius(rad){
+                this.radius = rad;
+            }
+            getColor(){
+                return(`The color of the circle is ${this.color}`);
+            }
+            setColor(newcolor){
+                this.color = newcolor;
+            }
+            getArea(){
+                const pi = Math.PI;
+                const area = pi * this.radius * this.radius;
+                return (`The area of circle is ${area}`);
+            }
+            getCircumference(){
+                const pi = Math.PI;
+                const circumference = 2 * pi * this.radius;
+                return (`The circumference of circle is ${circumference}`);
+            }
+        }
+
+        const circleone = new Circle(2.5,"red");
+        circleone.setColor("blue");
+        circleone.setRadius(35.5);
+        console.log(circleone.getRadius(),circleone.getColor(),circleone.getArea(),circleone.getCircumference())
+
+
+        // Person class to hold all the details
+        class Person{
+            constructor (name,dob,bloodgroup){
+                this.name = name;
+                this.dob = dob;
+                this.bloodgroup = bloodgroup;
+            }
+            // age calculation
+            getAge(){
+                const today = new Date();
+                const dob = new Date(this.dob);
+                let age = today.getFullYear() - dob.getFullYear();
+                const monthDiff = today.getMonth() - dob.getMonth();
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+                    age--;
+                }
+                return(`${this.name} was ${age} years old`);
+            }
+        }
+        const person1 = new Person("Ashike","1998-07-16","A1B+");
+        console.log(person1.getAge());
+
+
+        // Formula for calculating price [Price = (rate*distance) + (3*waitingtime)]
+        class Uber{
+            constructor (distance,rate,waitingtime){
+                this.distance = distance;
+                this.rate = rate;
+                this.waitingtime = waitingtime;
+            }
+            getRideDetails(){
+                return(`The distance of the ride is ${this.distance}km with the rate of ${this.rate} with a waiting period of ${this.waitingtime}ms`);
+            }
+            getPriceDetails(){
+                let price = (this.rate * this.distance) + (3 * this.waitingtime);
+                return(`The price is Rs.${price}`);
+            }
+            setDistance(dist){
+                this.distance = dist;
+            }
+        }
+
+        const location_one = new Uber(50,30,15);
+        location_one.setDistance(40);
+        console.log(location_one.getPriceDetails());
+
+    </script>
+</body>
+</html>
