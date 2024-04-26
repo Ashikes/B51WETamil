@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Population</title>
+</head>
+<body>
+    <div id="population"></div>
+    <script>
+fetch('https://restcountries.com/v3.1/all')
+    .then(response => response.json())
+    .then(data => {
+        const countriesWithLowPopulation = data.filter(country => {
+            return country.population < 200000;
+        });
+        let populationhtml = "";
+        countriesWithLowPopulation.forEach(country => {
+            populationhtml += `
+                        <div>
+                            <h3>Name: ${country.name.common}</h3>
+                        </div>
+                        <hr>
+                    `;
+            console.log(country.name.common);
+        });
+        document.getElementById('population').innerHTML = populationhtml;
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+
+    </script>
+</body>
+</html>

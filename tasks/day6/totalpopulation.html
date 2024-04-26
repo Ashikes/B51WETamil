@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Total population</title>
+</head>
+<body>
+    <div id="totalpopulation"></div>
+    <script>
+fetch('https://restcountries.com/v3.1/all')
+    .then(response => response.json())
+    .then(data => {
+        const totalPopulation = data.reduce((accumulator, country) => {
+            return accumulator + country.population;
+        }, 0);
+        document.getElementById('totalpopulation').innerText = "Total population of all countries:"+ totalPopulation;
+        console.log("Total population of all countries:", totalPopulation);
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+
+    </script>
+</body>
+</html>

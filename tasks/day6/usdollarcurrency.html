@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country uses US dollars</title>
+</head>
+<body>
+    <div id="usdollarcurrency"></div>
+
+    <script>
+fetch('https://restcountries.com/v3.1/all')
+    .then(response => response.json())
+    .then(data => {
+        const countryWithUSD = data.find(country => {
+            return country.currencies && country.currencies.hasOwnProperty("USD");
+        });
+
+        if (countryWithUSD) {
+            document.getElementById('usdollarcurrency').innerText = "Country that uses US dollars as currency: "+ countryWithUSD.name.common;
+            console.log("Country that uses US dollars as currency:", countryWithUSD.name.common);
+        } else {
+            document.getElementById('usdollarcurrency').innerText = "No country found that uses US dollars as currency.";
+            console.log("No country found that uses US dollars as currency.");
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+
+    </script>
+</body>
+</html>
